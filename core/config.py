@@ -23,3 +23,5 @@ CORS_ORIGINS = [
 	"http://localhost:8000",
 	"https://localhost:8000",
 ]
+
+UPLOAD_DIR: str = "ficheros/"

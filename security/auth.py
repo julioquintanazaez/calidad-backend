@@ -18,7 +18,7 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 oauth2_scheme = OAuth2PasswordBearer(
 	tokenUrl="token",
-	scopes={"admin": "Adicionar, modificar información.", "trabajador": "Modificar información.", "cliente": "Consumir información."}
+	scopes={"admin": "Adicionar, modificar información.", "usuario": "Consumir información."}
 )
 
 def verify_password(plain_password, hashed_password):

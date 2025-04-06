@@ -25,20 +25,16 @@ class JSONEncodeDict(TypeDecorator):
 class User(Base):
 	__tablename__ = "user"
 	
-	id = Column(GUID, primary_key=True, default=GUID_DEFAULT_SQLITE)
+	id = Column(GUID, primary_key=True, default=GUID_DEFAULT_SQLITE, index=True)
 	usuario = Column(String(30), unique=True, index=True) 
 	role = Column(JSONEncodeDict)
 	hashed_password = Column(String(100), nullable=True, default=False)	
-	
-	profesor = relationship("Profesor", uselist=False, back_populates="user_profesor", cascade="all, delete")
-	cliente = relationship("Cliente", uselist=False, back_populates="user_cliente", cascade="all, delete")
-	estudiante = relationship("Estudiante", uselist=False, back_populates="user_estudiante", cascade="all, delete")
 
+class TextFile(Base):
+    __tablename__ = "text_files"
 
-class Modelos_Calidad(Base):
-	__tablename__ = "modelos_calidad"
-	
-	id_modelo = Column(GUID, primary_key=True, default=GUID_DEFAULT_SQLITE) 
-	nombre_modelo = Column(String(50), unique=True, nullable=False, index=True) 
-	desc_modelo = Column(String(250), nullable=False, index=True)
-	tipo_modelo = Column(String(50), nullable=True, index=True) 
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(100), index=True)
+    description = Column(Text, nullable=True)
+    file_path = Column(String(255), unique=True)
+
