@@ -47,6 +47,7 @@ class Comentarios(Base):
 	id_comentario = Column(GUID, primary_key=True, default=GUID_DEFAULT_SQLITE, index=True)
 	comentario = Column(String(300), index=True)
 	fecha_comentario = Column(DateTime, nullable=False, server_default=func.now())
+	pensamiento = Column(String(50), index=True)
 
 	documento_id = Column(Integer, ForeignKey("text_files.id"))
 	documentos = relationship("TextFile", back_populates="comentarios_documentos")	

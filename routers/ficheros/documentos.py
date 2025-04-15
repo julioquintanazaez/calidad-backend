@@ -87,8 +87,4 @@ def download_file(file_id: int, db: Session = Depends(get_db)):
     response = FileResponse(db_file.file_path, media_type=media_type)
     response.headers["Content-Disposition"] = f"attachment; filename*=utf-8''{file_path}" #filename*=utf-8''
     return response
-    #return FileResponse(
-    #    db_file.file_path,
-    #    media_type="application/octet-stream",
-    #    filename=os.path.basename(db_file.file_path))
     

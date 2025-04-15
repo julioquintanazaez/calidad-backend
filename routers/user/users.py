@@ -10,7 +10,8 @@ from typing_extensions import Annotated
 router = APIRouter()
 
 @router.post("/crear_usuario/", status_code=status.HTTP_201_CREATED)
-async def create_user(user: User_Record, db: Session = Depends(get_db)): 
+async def create_user(usuario_actual: Annotated[User_InDB, Security(get_current_user, scopes=["admin"])],
+					  user: User_Record, db: Session = Depends(get_db)): 
     user.hashed_password = get_password_hash(user.hashed_password)
     db_user = User(**user.dict())
     db.add(db_user)

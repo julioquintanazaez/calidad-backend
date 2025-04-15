@@ -14,4 +14,9 @@ class ComentarioBase(BaseModel):
 class ComentarioDB(ComentarioBase):		
 	id_comentario : str
 	fecha_comentario : date
+
+class DeleteRequest(BaseModel):
+    indices: List[str]
+    documento_id: int
+
 	
